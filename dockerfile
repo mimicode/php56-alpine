@@ -6,6 +6,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
     && docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-configure mcrypt && docker-php-ext-install -j$(nproc) mcrypt pcntl sockets bcmath pdo_mysql mysqli exif intl zip opcache
 RUN printf "no\nno\n" | pecl install redis-4.2.0   && docker-php-ext-enable redis \
-    && printf "yes\nno\n" | pecl install apcu-4.0.10 && docker-php-ext-enable  apcu \
+    && printf "yes\nno\n" | pecl install apcu-4.0.10 && docker-php-ext-enable  apcu
 EXPOSE 9056
 CMD ["php-fpm","-c","/usr/local/etc/php/php.ini","-y","/usr/local/etc/php-fpm.d/www.conf"]
